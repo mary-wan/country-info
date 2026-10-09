@@ -60,6 +60,12 @@ curl -X POST http://localhost:8080/api/countries \
 
 Full interactive API documentation is available in Swagger UI at the link above.
 
+For manual testing of the country endpoints, import
+[docs/country-information.postman_collection.json](docs/country-information.postman_collection.json)
+into Postman. It covers the lookup, list, fetch, update and delete requests. Set the `baseUrl`
+variable if the service is not on `http://localhost:8080`, and set `countryId` to the identifier
+returned by the lookup request.
+
 ## Testing
 
 ```bash
@@ -88,6 +94,6 @@ registry with `-Registry`.
 .\deploy.ps1 -Registry registry.example.com/myproject -Tag v1
 ```
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the system design,
+See 
 [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the full deployment guide, and
 [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) when something goes wrong.

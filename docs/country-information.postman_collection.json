@@ -1,0 +1,127 @@
+{
+  "info": {
+    "name": "Country Information API",
+    "description": "Local testing collection for the country information service. Set the baseUrl variable if the service is not on http://localhost:8080, and set countryId to the identifier returned by the lookup request.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "countryId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Look up a country",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"kenya\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/countries",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "countries"
+          ]
+        },
+        "description": "Returns 201 when the country is newly stored and 200 when it was already present. The name is sent in lower case because the upstream SOAP service is case sensitive and the service normalizes it first."
+      }
+    },
+    {
+      "name": "List all countries",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/countries",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "countries"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get country by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/countries/{{countryId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "countries",
+            "{{countryId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update a country",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Kenya\",\n  \"capitalCity\": \"Nairobi\",\n  \"phoneCode\": \"254\",\n  \"continentCode\": \"AF\",\n  \"currencyIsoCode\": \"KES\",\n  \"flagUrl\": \"http://www.oorsprong.org/WebSamples.CountryInfo/Images/Kenya.jpg\",\n  \"languages\": [\n    {\n      \"isoCode\": \"sw\",\n      \"name\": \"Swahili\"\n    },\n    {\n      \"isoCode\": \"en\",\n      \"name\": \"English\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/countries/{{countryId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "countries",
+            "{{countryId}}"
+          ]
+        },
+        "description": "The languages list is replaced wholesale, so languages left out of the body are removed from the record."
+      }
+    },
+    {
+      "name": "Delete a country",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/countries/{{countryId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "countries",
+            "{{countryId}}"
+          ]
+        }
+      }
+    }
+  ]
+}
