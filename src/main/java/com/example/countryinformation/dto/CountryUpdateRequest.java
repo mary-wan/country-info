@@ -26,5 +26,5 @@ public record CountryUpdateRequest(
         @Size(max = 500, message = "Flag URL must not exceed 500 characters")
         String flagUrl,
 
-        @Valid List<LanguageRequest> languages) {
+        List<@Valid LanguageRequest> languages) {
 }

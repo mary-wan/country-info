@@ -6,9 +6,7 @@ metadata:
   labels:
     app: country-information
 data:
-  SPRING_PROFILES_ACTIVE: prod
   SERVER_PORT: "8080"
-
   DB_URL: jdbc:mysql://host.k3d.internal:3306/country_information
   DB_POOL_SIZE: "20"
   DDL_AUTO: validate

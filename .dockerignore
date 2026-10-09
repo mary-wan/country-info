@@ -7,7 +7,7 @@ target/
 *.iml
 .vscode/
 
-deployment-manifests/
+k8s/
 *.md
 
 .mvn/wrapper/maven-wrapper.jar
