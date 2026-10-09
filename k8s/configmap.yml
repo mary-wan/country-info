@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: country-information-configmap
+  namespace: country-info
+  labels:
+    app: country-information
+data:
+  SPRING_PROFILES_ACTIVE: prod
+  SERVER_PORT: "8080"
+
+  DB_URL: jdbc:mysql://host.k3d.internal:3306/country_information
+  DB_POOL_SIZE: "20"
+  DDL_AUTO: validate
+  SOAP_ENDPOINT: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso
+  SOAP_CONNECT_TIMEOUT: 5s
+  SOAP_READ_TIMEOUT: 10s
+  RESILIENCE_MAX_ATTEMPTS: "3"
+  RESILIENCE_BACKOFF: 500ms
+  RESILIENCE_BACKOFF_MULTIPLIER: "2.0"
+  RESILIENCE_FAILURE_RATE_THRESHOLD: "50"
+  RESILIENCE_WAIT_DURATION_OPEN: 30s
+  RESILIENCE_SLIDING_WINDOW_SIZE: "10"
+  RESILIENCE_MIN_CALLS: "5"
+  RESILIENCE_PERMITTED_CALLS_HALF_OPEN: "3"
+  SWAGGER_ENABLED: "false"

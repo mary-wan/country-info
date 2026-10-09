@@ -1,0 +1,59 @@
+spring:
+  output:
+    ansi:
+      enabled: never
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:20}
+      connection-timeout: 10000
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}
+    open-in-view: false
+    show-sql: false
+
+country-info:
+  soap:
+    endpoint: ${SOAP_ENDPOINT}
+    connect-timeout: ${SOAP_CONNECT_TIMEOUT:5s}
+    read-timeout: ${SOAP_READ_TIMEOUT:10s}
+  resilience:
+    max-attempts: ${RESILIENCE_MAX_ATTEMPTS:3}
+    backoff: ${RESILIENCE_BACKOFF:500ms}
+    backoff-multiplier: ${RESILIENCE_BACKOFF_MULTIPLIER:2.0}
+    failure-rate-threshold: ${RESILIENCE_FAILURE_RATE_THRESHOLD:50}
+    wait-duration-in-open-state: ${RESILIENCE_WAIT_DURATION_OPEN:30s}
+    sliding-window-size: ${RESILIENCE_SLIDING_WINDOW_SIZE:10}
+    minimum-number-of-calls: ${RESILIENCE_MIN_CALLS:5}
+    permitted-calls-in-half-open-state: ${RESILIENCE_PERMITTED_CALLS_HALF_OPEN:3}
+
+springdoc:
+  api-docs:
+    enabled: ${SWAGGER_ENABLED:false}
+  swagger-ui:
+    enabled: ${SWAGGER_ENABLED:false}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: when-authorized
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+server:
+  port: ${SERVER_PORT:8080}
+
+logging:
+  config: /mnt/configmap/logback/logback.xml

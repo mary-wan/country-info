@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logback-configmap
+  namespace: country-info
+data:
+  logback.xml: |
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level [%X{correlationId:-}] %logger{36}.%M - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="org.hibernate.orm.connections.pooling" level="warn"/>
+        <logger name="com.example.countryinformation.config.SoapLoggingInterceptor" level="info"/>
+
+        <root level="info">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </configuration>

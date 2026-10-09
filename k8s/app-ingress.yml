@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: country-information
+  namespace: country-info
+  labels:
+    app: country-information
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: country-information.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: country-information
+                port:
+                  name: http

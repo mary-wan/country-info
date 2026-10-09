@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: country-information
+  namespace: country-info
+  labels:
+    app: country-information
+spec:
+  selector:
+    app: country-information
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
