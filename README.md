@@ -10,12 +10,11 @@ A single `POST /api/countries` request runs this pipeline:
 
 1. **Normalize** the submitted name (`kenya` to `Kenya`). The upstream service is case sensitive
    and rejects anything that is not capitalised word-by-word.
-2. **Short-circuit** if the country is already stored, so no SOAP call is made.
-3. **Resolve the ISO code** via the `CountryISOCode` SOAP operation (`Kenya` to `KE`).
-4. **Fetch the full record** via the `FullCountryInfo` operation using that ISO code.
-5. **Persist** the country and its languages, then return the stored representation.
+2. **Resolve the ISO code** via the `CountryISOCode` SOAP operation (`Kenya` to `KE`).
+3. **Fetch the full record** via the `FullCountryInfo` operation using that ISO code.
+4. **Persist** the country and its languages, then return the stored representation.
 
-Steps 3 and 4 are the two chained SOAP calls required by the brief; they are deliberately one
+Steps 2 and 3 are the two chained SOAP calls required by the brief; they are deliberately one
 pipeline behind one endpoint rather than two separately callable endpoints.
 
 ## Running locally
