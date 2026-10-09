@@ -6,13 +6,13 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.countryinformation.dto.CountryLookupResult;
+import com.example.countryinformation.dto.CountryUpdate;
 import com.example.countryinformation.exception.CountryNotFoundException;
 import com.example.countryinformation.model.CountryInfo;
 import com.example.countryinformation.model.Language;
 import com.example.countryinformation.repository.CountryInfoRepository;
-import com.example.countryinformation.service.CountryLookupResult;
 import com.example.countryinformation.service.CountryService;
-import com.example.countryinformation.service.CountryUpdate;
 import com.example.countryinformation.soap.CountryDetails;
 import com.example.countryinformation.soap.CountryInfoClient;
 import com.example.countryinformation.utils.CountryNameNormalizer;

@@ -18,7 +18,7 @@ import com.example.countryinformation.dto.CountryLookupRequest;
 import com.example.countryinformation.dto.CountryMapper;
 import com.example.countryinformation.dto.CountryResponse;
 import com.example.countryinformation.dto.CountryUpdateRequest;
-import com.example.countryinformation.service.CountryLookupResult;
+import com.example.countryinformation.dto.CountryLookupResult;
 import com.example.countryinformation.service.CountryService;
 
 import jakarta.validation.Valid;

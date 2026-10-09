@@ -1,4 +1,4 @@
-package com.example.countryinformation.service;
+package com.example.countryinformation.dto;
 
 import java.util.List;
 

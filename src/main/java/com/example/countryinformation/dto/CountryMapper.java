@@ -1,8 +1,6 @@
 package com.example.countryinformation.dto;
 
 import com.example.countryinformation.model.CountryInfo;
-import com.example.countryinformation.service.CountryUpdate;
-import com.example.countryinformation.service.LanguageUpdate;
 
 public final class CountryMapper {
 

@@ -18,23 +18,6 @@ A single `POST /api/countries` request runs this pipeline:
 Steps 3 and 4 are the two chained SOAP calls required by the brief; they are deliberately one
 pipeline behind one endpoint rather than two separately callable endpoints.
 
-## Project layout
-
-```
-src/main/java/com/example/countryinformation/
-    controller/   REST layer, HTTP concerns only
-    service/      business pipeline (interface + impl)
-    repository/   Spring Data JPA
-    soap/         CountryInfoClient interface + WebServiceTemplate implementation
-    model/        JPA entities (CountryInfo, Language)
-    dto/          request/response records + mapper
-    config/       SOAP, resilience, correlation ID, OpenAPI
-    exception/    domain exceptions + global handler
-    utils/        CountryNameNormalizer
-k8s/              Kubernetes manifests
-docs/             deployment and troubleshooting guides
-```
-
 ## Running locally
 
 ### Prerequisites
@@ -99,12 +82,12 @@ docker build -t country-information:latest .
 
 Kubernetes manifests live in `k8s/`, and `deploy.ps1` builds the image, makes it available to the
 target cluster and applies the manifests in order. It works against any cluster. Push to a
-registry with `-Registry`, or side-load into a local cluster with `-LoadInto k3d|kind|minikube`.
+registry with `-Registry`.
 
 ```powershell
 .\deploy.ps1 -Registry registry.example.com/myproject -Tag v1
 ```
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the full guide, including the three values you
-must set for your environment, and [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) when
-something goes wrong.
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the system design,
+[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the full deployment guide, and
+[docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) when something goes wrong.

@@ -25,11 +25,11 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.countryinformation.config.CorrelationIdFilter;
 import com.example.countryinformation.exception.GlobalExceptionHandler;
+import com.example.countryinformation.dto.CountryLookupResult;
+import com.example.countryinformation.dto.CountryUpdate;
 import com.example.countryinformation.model.CountryInfo;
 import com.example.countryinformation.model.Language;
-import com.example.countryinformation.service.CountryLookupResult;
 import com.example.countryinformation.service.CountryService;
-import com.example.countryinformation.service.CountryUpdate;
 
 @WebMvcTest(controllers = CountryController.class)
 @Import({ GlobalExceptionHandler.class, CorrelationIdFilter.class })

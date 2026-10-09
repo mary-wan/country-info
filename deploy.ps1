@@ -7,8 +7,6 @@
     Works against any Kubernetes cluster. The image is made available in one of three ways:
 
       -Registry <host/project>  build, tag and push to a container registry (remote clusters)
-      -LoadInto <tool>          load the local image straight into a local cluster
-                                (k3d, kind or minikube), no registry needed
       neither                   assume the image is already available to the cluster
 
 .EXAMPLE
